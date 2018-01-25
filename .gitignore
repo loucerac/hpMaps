@@ -1,0 +1,33 @@
+## Project specific
+
+# Ignore data folder
+data/*
+!data/.gitkeep 
+!data/dna_repair/.gitkepp
+
+# Ignore apps folder
+apps/*
+!data/.gitkeep 
+
+# Ignore figs folder
+figs/*
+!figs/.gitkeep 
+
+
+## Vim.gitignore
+
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+
+# Temporary
+.netrwhist
+*~
+
+# Auto-generated tag files
+tags
