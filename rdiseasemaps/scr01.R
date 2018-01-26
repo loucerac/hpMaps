@@ -5,13 +5,12 @@ library(igraph)
 
 config <- ini::read.ini(".ini")
 
-biopax_filepath <- file.path(config$folders$dna_folder,
-                             config$folders$biopax_filename)
+biopax_filepath <- normalizePath(
+    file.path(config$folders$dna_folder, config$folders$biopax_filename)
+)
+
 sif <- toSif(inputFile=biopax_filepath)
 sif_graph <- graph.edgelist(as.matrix(sif[, c(1, 3)]), directed = T)
-
-## plot and fit the power law distribution power law distribution
-plot(dd, type = "b", xlab = "node degree", ylab = "Probability")
 
 # rank-order distribution
 degree_in <- degree(sif_graph, mode = "in")
