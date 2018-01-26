@@ -1,16 +1,18 @@
 ## Convert biopax to sif
 
+library(here)
 library(paxtoolsr)
 library(igraph)
 
-config <- ini::read.ini(".ini")
-source("conversion.R")
+#TODO: change to ".dotenv"
+ini_filepath <- here(".ini")
+config <- ini::read.ini(ini_filepath)
 
 biopax_filepath <- normalizePath(
     file.path(config$folders$dna_folder, config$folders$biopax_filename)
     )
 
-# convert adn write to sif
+# convert and write to sif
 sif_filepath <- paste0(biopax_filepath, ".sif") # already normalized
 sif_att_filepath <- paste0(biopax_filepath, ".att") # already normalized
 sif <- toSifnx(
