@@ -25,6 +25,11 @@ write.table(
     quote = F, sep = "\t", row.names = F
     )
 
+#TODO: modify "toSifnx" in order to include other paxtools optional arguments
+# as "exclude=neighbor_of"
+
+#TODO: collapse "in-complex-with" into a single node
+
 # convert to igraph
 sif_graph <- graph.edgelist(as.matrix(sif[["edges"]][, c(1, 3)]), directed = T)
 
