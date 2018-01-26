@@ -7,7 +7,7 @@ data/*
 
 # Ignore apps folder
 apps/*
-!data/.gitkeep 
+!apps/.gitkeep 
 
 # Ignore figs folder
 figs/*
