@@ -3,5 +3,6 @@
 # attribute extraction
 
 devtools::install_github("BioPAX/paxtoolsr")
+require("here")
 require("igraph")
 require(".ini")
