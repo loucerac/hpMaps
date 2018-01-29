@@ -31,4 +31,7 @@ Session.vim
 
 # Auto-generated tag files
 tags
+
+## Rstudio
 .Rproj.user
+.Rproj
