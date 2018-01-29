@@ -7,21 +7,22 @@ library(igraph)
 #TODO: change to ".dotenv"
 ini_filepath <- here(".ini")
 config <- ini::read.ini(ini_filepath)
+source(here("sif_transformations.R"))
 
 biopax_filepath <- normalizePath(
     file.path(config$folders$dna_folder, config$folders$biopax_filename)
     )
 
-# convert and write to sif
+# convert and write to sif, see http://www.pathwaycommons.org/pc2/formats
 sif_filepath <- paste0(biopax_filepath, ".sif") # already normalized
 sif_att_filepath <- paste0(biopax_filepath, ".att") # already normalized
-sif <- toSifnx(
+sif_raw <- toSifnx(
     inputFile = biopax_filepath, outputFile = sif_filepath,
     idType = "hgnc"
     )
 
 write.table(
-    sif[["nodes"]], file = sif_att_filepath,
+    sif_raw[["nodes"]], file = sif_att_filepath,
     quote = F, sep = "\t", row.names = F
     )
 
@@ -29,6 +30,10 @@ write.table(
 # as "exclude=neighbor_of"
 
 #TODO: collapse "in-complex-with" into a single node
+
+## SIF filtering ---------------------------------------------------------------
+
+sif <- transform_sif(sif_raw)
 
 # convert to igraph
 sif_graph <- graph.edgelist(as.matrix(sif[["edges"]][, c(1, 3)]), directed = T)
