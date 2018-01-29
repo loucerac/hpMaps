@@ -34,4 +34,4 @@ tags
 
 ## Rstudio
 .Rproj.user
-.Rproj
+*.Rproj
